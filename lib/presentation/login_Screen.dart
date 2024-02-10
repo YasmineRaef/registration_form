@@ -59,25 +59,21 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Row(children: [
-                        Text(
-                          "Don't have an account?",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 244, 234, 234),
-                              fontSize: 20),
-                        ),
-                        InkWell(
-                            child: Text(
-                          'Sign-up now',
-                          style: TextStyle(
-                              color: Colors.redAccent,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                              decoration: TextDecoration.underline),
-                        ))
-                      ]))
+                  Text(
+                    "Don't have an account ?",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 244, 234, 234),
+                        fontSize: 20),
+                  ),
+                  InkWell(
+                      child: Text(
+                    'Sign-up now',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 137, 247, 3),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        decoration: TextDecoration.underline),
+                  ))
                 ])
               ])
             ]))));
