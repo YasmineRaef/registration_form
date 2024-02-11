@@ -18,15 +18,16 @@ class CustomTextField extends StatelessWidget {
                   color: Colors.blueGrey)),
           TextField(
               decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 57, 86)),
-            fillColor: Colors.blueGrey[200],
-            filled: true,
-            enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black12)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade500)),
-          ))
+                  contentPadding: const EdgeInsets.all(8),
+                  hintText: hintText,
+                  hintStyle:
+                      const TextStyle(color: Color.fromARGB(255, 0, 57, 86)),
+                  fillColor: Colors.blueGrey[200],
+                  filled: true,
+                  enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black12)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade500))))
         ]));
   }
 }
@@ -42,13 +43,10 @@ class CustomButton extends StatelessWidget {
       child: TextButton(
         onPressed: () => print('Hello'),
         style: const ButtonStyle(
-          backgroundColor:
-              MaterialStatePropertyAll(Color.fromARGB(255, 0, 57, 86)),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.white, fontSize: 16),
-        ),
+            backgroundColor:
+                MaterialStatePropertyAll(Color.fromARGB(255, 0, 57, 86))),
+        child: Text(text,
+            style: const TextStyle(color: Colors.white, fontSize: 16)),
       ),
     );
   }
