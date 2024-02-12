@@ -3,7 +3,7 @@ import 'package:registration_form/presentation/custom_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
-
+  static const route = 'signIn';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
