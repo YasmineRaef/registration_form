@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:registration_form/presentation/custom_widgets.dart';
+import 'package:registration_form/presentation/custom_form.dart';
 
 class CustomPage extends StatelessWidget {
   const CustomPage(
@@ -28,7 +30,7 @@ class CustomPage extends StatelessWidget {
                 child: Stack(children: [
           Image(image: AssetImage(imagePath)),
           Column(children: [
-            const SizedBox(height: 50),
+            const Gap(50),
             Text(
               pageTitle,
               style: const TextStyle(
@@ -36,14 +38,12 @@ class CustomPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 24),
             ),
-            CustomTextField(
-                label: fTextBoxTitle, hintText: 'enter your $fTextBoxTitle'),
-            const CustomTextField(
-                label: 'Password', hintText: 'enter your password'),
-            CustomTextField(
-                label: sTextBoxTitle, hintText: 'enter your $sTextBoxTitle'),
-            CustomButton(text: pageTitle),
-            const SizedBox(height: 15),
+            const Gap(20),
+            CustomForm(
+                firstTextField: fTextBoxTitle,
+                secondTextField: sTextBoxTitle,
+                labelButton: pageTitle),
+            const Gap(20),
             Text(
               question,
               style: const TextStyle(
@@ -51,11 +51,8 @@ class CustomPage extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                if (signWhere == 'Sign-up now') {
-                  Navigator.pushReplacementNamed(context, 'signUp');
-                } else if (signWhere == 'Sign-in now') {
-                  Navigator.pushReplacementNamed(context, 'signIn');
-                }
+                Navigator.pushReplacementNamed(
+                    context, signWhere == 'Sign-up now' ? 'signUp' : 'signIn');
               },
               child: Text(signWhere,
                   style: const TextStyle(
@@ -64,24 +61,29 @@ class CustomPage extends StatelessWidget {
                       fontSize: 25,
                       decoration: TextDecoration.underline)),
             ),
-            const SizedBox(height: 10),
+            const Gap(10),
             const Text(
               'Or Continue with ',
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
-            const Padding(
-                padding: EdgeInsets.all(40),
+            Padding(
+                padding: const EdgeInsets.all(40),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomCircleAvatar(path: 'Images/microsoft-logo.png'),
-                      SizedBox(width: 50),
-                      CustomCircleAvatar(path: 'Images/Apple-logo-solid.png'),
-                      SizedBox(width: 50),
-                      CustomCircleAvatar(path: 'Images/google-logo.png')
+                      for (int i = 0; i < 3; i++) ...[
+                        CustomCircleAvatar(path: paths[i]),
+                        const Gap(42),
+                      ]
                     ]))
           ])
-        ])))); //scaffold
+        ]))));
   }
 }
+
+List<String> paths = [
+  'Images/microsoft-logo.png',
+  'Images/Apple-logo-solid.png',
+  'Images/google-logo.png'
+];
