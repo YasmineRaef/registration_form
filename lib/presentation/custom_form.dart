@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:registration_form/presentation/resources/theme_manager.dart';
 import 'package:string_validator/string_validator.dart';
 
 class CustomForm extends StatelessWidget {
@@ -15,6 +16,7 @@ class CustomForm extends StatelessWidget {
   final formField = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    ThemeManager themeManager = ThemeManager();
     return Form(
         key: formField,
         child: Column(children: [
@@ -26,12 +28,8 @@ class CustomForm extends StatelessWidget {
               height: 50,
               width: 150,
               child: TextButton(
-                  style: const ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
-                          Color.fromARGB(255, 0, 57, 86))),
-                  child: Text(labelButton,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 16)),
+                  style: themeManager.signingButton,
+                  child: Text(labelButton, style: themeManager.buttonLabel),
                   onPressed: () {
                     if (formField.currentState!.validate()) {
                       print('validated');
@@ -50,36 +48,42 @@ Widget textFormField(String hintText) {
   return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
-          decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(8),
-              hintText: hintText,
-              hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 57, 86)),
-              fillColor: Colors.blueGrey[200],
-              filled: true,
-              enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black12)),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey.shade500))),
+          decoration: ThemeManager.inputDecoration(hintText),
           validator: (value) {
             if (value!.isEmpty) {
               return 'Empty Field';
             } else {
+              String correctPass = '';
               switch (hintText) {
                 case 'E-mail' || 'Username':
                   if (!isEmail(value)) {
                     return 'invalid email .. ex: __@sth.com';
                   }
                 case 'Password':
-                  if (value.length < 8) {
-                    return 'password must at least contain 8 characters';
+                  correctPass = value;
+                  if (value.length < 6) {
+                    return 'password must be more than 6 characters';
+                  }
+                  if (!value.contains(RegExp(r'[A-Z]'))) {
+                    return 'Add at least one capital letter';
+                  }
+                  if (!value.contains(RegExp(r'[a-z]'))) {
+                    return 'Add at least one lowercase letter';
+                  }
+                  if (!value.contains(RegExp(r'[0-9]'))) {
+                    return 'A digit is required';
+                  }
+                  if (!value.contains(RegExp('[!@#%^&*_?<>~,.\$"]'))) {
+                    return 'Special character required';
+                  }
+                case 'Confirm Password':
+                  if (value != correctPass) {
+                    return 'Incorrect Password';
                   }
                 case 'Phone-number':
                   if (value.length != 11 || !isNumeric(value)) {
                     return 'Invalid phone number';
                   }
-                //The case of conforming the password is missing,
-                //where the value entered in password must be equal
-                //to that in confirm password
               }
             }
           }));
