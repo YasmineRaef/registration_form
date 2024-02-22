@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:registration_form/presentation/home_page.dart';
 import 'package:registration_form/presentation/sign_in.dart';
 import 'package:registration_form/presentation/sign_up_screen.dart';
 
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           'signIn': (context) => const SignInPage(),
-          'signUp': (context) => const SignUpPage()
+          'signUp': (context) => const SignUpPage(),
+          'home': (context) => const HomePage()
         });
   }
 }

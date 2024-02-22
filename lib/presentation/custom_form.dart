@@ -33,6 +33,7 @@ class CustomForm extends StatelessWidget {
                   onPressed: () {
                     if (formField.currentState!.validate()) {
                       print('validated');
+                      Navigator.pushReplacementNamed(context, 'home');
                     } else {
                       print('invalid');
                     }
@@ -54,8 +55,11 @@ Widget textFormField(String hintText) {
               return 'Empty Field';
             } else {
               String correctPass = '';
+              String email = '';
+              String confirmedPass = '';
               switch (hintText) {
                 case 'E-mail' || 'Username':
+                  email = value;
                   if (!isEmail(value)) {
                     return 'invalid email .. ex: __@sth.com';
                   }
@@ -79,6 +83,8 @@ Widget textFormField(String hintText) {
                 case 'Confirm Password':
                   if (value != correctPass) {
                     return 'Incorrect Password';
+                  } else {
+                    confirmedPass = value;
                   }
                 case 'Phone-number':
                   if (value.length != 11 || !isNumeric(value)) {
