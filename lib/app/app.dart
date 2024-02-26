@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:registration_form/presentation/home_page.dart';
-import 'package:registration_form/presentation/sign_in.dart';
-import 'package:registration_form/presentation/sign_up_screen.dart';
+import 'package:registration_form/presentation/pages/home_page.dart';
+import 'package:registration_form/presentation/pages/sign_in_page.dart';
+import 'package:registration_form/presentation/pages/sign_up_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

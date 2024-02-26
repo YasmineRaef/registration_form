@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:registration_form/presentation/custom_form.dart';
-import 'package:registration_form/presentation/custom_widgets.dart';
+import 'package:registration_form/presentation/customs/custom_form.dart';
+import 'package:registration_form/presentation/customs/custom_widgets.dart';
 import 'package:registration_form/presentation/resources/theme_manager.dart';
 
 class CustomPage extends StatelessWidget {
