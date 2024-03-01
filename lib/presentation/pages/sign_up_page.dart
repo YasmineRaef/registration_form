@@ -8,10 +8,11 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomPage(
         pageTitle: 'Sign-up',
-        fTextBoxTitle: 'Username',
+        fTextBoxTitle: 'E-mail',
         sTextBoxTitle: 'Confirm Password',
         signWhere: 'Sign-in now',
         question: 'Already have an account ?',
-        imagePath: 'Images/bgimage2.jpg');
+        imagePath: 'Images/bgimage2.jpg',
+        textFieldNum: 3);
   }
 }

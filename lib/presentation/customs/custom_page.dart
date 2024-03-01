@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:registration_form/presentation/customs/custom_form.dart';
 import 'package:registration_form/presentation/customs/custom_widgets.dart';
-import 'package:registration_form/presentation/resources/theme_manager.dart';
 
 class CustomPage extends StatelessWidget {
   const CustomPage(
@@ -12,44 +11,51 @@ class CustomPage extends StatelessWidget {
       required this.sTextBoxTitle,
       required this.signWhere,
       required this.question,
-      required this.imagePath});
+      required this.imagePath,
+      required this.textFieldNum});
   final String pageTitle;
   final String fTextBoxTitle;
   final String sTextBoxTitle;
   final String signWhere;
   final String question;
   final String imagePath;
+  final int textFieldNum;
   @override
   Widget build(BuildContext context) {
-    ThemeManager themeManager = ThemeManager();
     return Scaffold(
-        backgroundColor: themeManager.scaffoldColor,
         appBar: AppBar(
-            title: const Center(child: Text("You're port to a new world 😎")),
-            backgroundColor: themeManager.appBarColor),
+            title: const Center(child: Text("You're port to a new world 😎"))),
         body: SingleChildScrollView(
             child: Center(
                 child: Stack(children: [
           Image(image: AssetImage(imagePath)),
           Column(children: [
             const Gap(50),
-            Text(pageTitle, style: themeManager.titleHeading),
+            Text(pageTitle),
             const Gap(20),
             CustomForm(
-                firstTextField: fTextBoxTitle,
-                secondTextField: sTextBoxTitle,
-                labelButton: pageTitle),
+              firstTextField: fTextBoxTitle,
+              secondTextField: sTextBoxTitle,
+              labelButton: pageTitle,
+              textNum: textFieldNum,
+              currentPage: pageTitle,
+            ),
             const Gap(20),
-            Text(question, style: themeManager.askQuestion),
+            Text(question, style: Theme.of(context).textTheme.bodySmall),
             InkWell(
               onTap: () {
                 Navigator.pushReplacementNamed(
                     context, signWhere == 'Sign-up now' ? 'signUp' : 'signIn');
               },
-              child: Text(signWhere, style: themeManager.headLineNav),
+              child:
+                  Text(signWhere, style: Theme.of(context).textTheme.bodyLarge),
             ),
             const Gap(10),
-            Text('Or Continue with ', style: themeManager.headline2),
+            Text('Or Continue with ',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(fontSize: 18)),
             Padding(
                 padding: const EdgeInsets.all(40),
                 child: Row(

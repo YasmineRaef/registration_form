@@ -9,9 +9,10 @@ class SignInPage extends StatelessWidget {
     return const CustomPage(
         pageTitle: "Sign-In",
         fTextBoxTitle: 'E-mail',
-        sTextBoxTitle: 'Phone-number',
+        sTextBoxTitle: '', //is'nt needed actually..
         signWhere: 'Sign-up now',
         question: "Don't have an account ?",
-        imagePath: 'Images/bg-image.jpg');
+        imagePath: 'Images/bg-image.jpg',
+        textFieldNum: 2);
   }
 }
