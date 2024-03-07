@@ -63,7 +63,7 @@ class CustomPage extends StatelessWidget {
                     children: [
                       for (int i = 0; i < 3; i++) ...[
                         CustomCircleAvatar(path: paths[i]),
-                        const Gap(42),
+                        const Gap(42)
                       ]
                     ]))
           ])

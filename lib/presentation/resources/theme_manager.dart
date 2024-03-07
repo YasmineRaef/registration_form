@@ -18,19 +18,15 @@ class AppTheme {
         textButtonTheme: const TextButtonThemeData(
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStatePropertyAll(Color.fromARGB(255, 0, 57, 86)))));
-  }
-
-  static InputDecoration inputDecoration(String hintText) {
-    return InputDecoration(
-        contentPadding: const EdgeInsets.all(8),
-        hintText: hintText,
-        hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 57, 86)),
-        fillColor: Colors.blueGrey[200],
-        filled: true,
-        enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black12)),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade500)));
+                    MaterialStatePropertyAll(Color.fromARGB(255, 0, 57, 86)))),
+        inputDecorationTheme: InputDecorationTheme(
+            contentPadding: const EdgeInsets.all(8),
+            hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 57, 86)),
+            fillColor: Colors.blueGrey[200],
+            filled: true,
+            enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black12)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey.shade500))));
   }
 }

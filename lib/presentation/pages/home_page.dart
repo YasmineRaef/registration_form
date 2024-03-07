@@ -9,16 +9,13 @@ class HomePage extends StatelessWidget {
         body: Center(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      const Text(
-        'Welcome to home page!',
-        style: TextStyle(color: Colors.black),
-      ),
+      const Text('Welcome to home page!',
+          style: TextStyle(color: Colors.black)),
       TextButton(
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, 'signIn');
-        },
-        child: const Text('Back to sign in screen'),
-      )
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, 'signIn');
+          },
+          child: const Text('Back to sign in screen'))
     ])));
   }
 }
